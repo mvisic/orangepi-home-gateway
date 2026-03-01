@@ -12,26 +12,11 @@ This project transforms an **Orange Pi Zero 3** into a reliable, always-on **Hom
 
 This guide documents the *first phase* of the build — setup of the OS and AdGuard Home for network-wide DNS filtering.
 
-## Network Architecture
-                 INTERNET
-                     |
-              [ ISP Modem ]
-                     |
-              [ Router / DHCP ]
-                     |
-        --------------------------------
-        |              |               |
-   [ Orange Pi ]  [ Home Assistant ]  [ LAN Devices ]
-   (AdGuard DNS)      Server        (Phones, TVs, IoT)
-
-
----
-
 ## Phase 1 – System Setup (Completed)
 
 ### 1. Flash Armbian Server Image (Completed)
 
-1. Download and flash the latest Armbian **Server / CLI** image for Orange Pi Zero 3.  
+1. Download and flash the [latest Armbian **Server / CLI** image for Orange Pi Zero 3](https://www.armbian.com/orange-pi-zero-3/).  
 2. Use balenaEtcher or ApplePi Baker on macOS to write the `.img.xz` to the microSD card.
 3. Insert the card and power on the board with Ethernet connected.
 
@@ -40,4 +25,17 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
 1. Find the IP address of the Orange Pi on your router’s device list.
 2. SSH into the board with:
    ```bash
-   ssh root@<orangepi-ip>
+   ssh root@<your-orangepi-ip-address>
+3. Change the root password when prompted
+
+### 3. Secure the System (Completed)
+
+1. Upate and install curl:
+ ```bash
+   sudo apt update
+   sudo apt upgrade -y
+   sudo apt install curl wget git htop vim tmux ufw -y
+2. Configure basic firewall rules:
+```bash
+   sudo apt u
+
