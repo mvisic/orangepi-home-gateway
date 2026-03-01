@@ -35,6 +35,7 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
 1. Upate and install curl:
  ```bash
    sudo apt install curl wget git htop vim tmux ufw -y
+
 2. Configure basic firewall rules:
  ```bash
    sudo apt install ufw -y
