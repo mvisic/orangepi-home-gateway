@@ -27,15 +27,18 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
    ```bash
    ssh root@<your-orangepi-ip-address>
 3. Change the root password when prompted
+4. Set up normal user account
+
 
 ### 3. Secure the System (Completed)
 
 1. Upate and install curl:
  ```bash
-   sudo apt update
-   sudo apt upgrade -y
    sudo apt install curl wget git htop vim tmux ufw -y
 2. Configure basic firewall rules:
-```bash
-   sudo apt u
+ ```bash
+   sudo apt install ufw -y
+sudo ufw allow OpenSSH
+sudo ufw enable
+ 
 
