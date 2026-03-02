@@ -28,6 +28,9 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
    ssh root@<your-orangepi-ip-address>
 3. Change the root password when prompted
 4. Set up normal user account
+5. Install of Armbian was successful
+   
+   ![Armbian boot screen](Armbian-boot.png))
 
 
 ### 3. Secure the System (Completed)
