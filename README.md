@@ -33,13 +33,50 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
 ### 3. Secure the System (Completed)
 
 1. Upate and install curl:
- ```bash
+    ```bash
    sudo apt install curl wget git htop vim tmux ufw -y
+   ```
 
 2. Configure basic firewall rules:
- ```bash
+    ```bash
    sudo apt install ufw -y
-sudo ufw allow OpenSSH
-sudo ufw enable
- 
+   sudo ufw allow OpenSSH
+   sudo ufw enable
+   ```
+3. Verify the firewall status:
+    ```bash
+   sudo ufw status
+   ```
+4. Add some additional layers of security
+   Open the OpenSSH server configuration file
+    ```bash
+    sudo nano /etc/ssh/sshd_config
+   ```
+5. Make sure PermitRootLogin is set to 'no' and PasswordAuthentication is set to 'yes' (for now)
+6. Restart 
+    ```bash
+    sudo systemctl restart ssh
+   ```
 
+### 4. Configure wifi (Completed)
+While I plan to have this connected via Ethernet and house this permanently near my router, I will set up wifi to make set up easier for now.
+
+1. Open network configuration
+    ```bash
+   sudo nmtui
+   ```
+2. Add wifi details
+I went to 'Add connection' and entered my SSID, Password and Security type. I ignored BSSID and the others.
+
+3. Reboot and reserve static IP - I unplugged the ethernet, rebooted and made sure the new wifi IP was reserved as a static IP in my router once it connected
+
+### 4. Another quick health check (Completed)
+
+1. Open Armbian Monitor
+    ```bash
+   armbianmonitor -m
+   ```
+   Idle CPU was 1% so looking good
+ 
+## Next Step - Install AdGuard
+   coming soon...
