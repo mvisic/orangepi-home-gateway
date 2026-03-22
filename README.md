@@ -12,7 +12,7 @@ This project transforms an **Orange Pi Zero 3** into a reliable, always-on **Hom
 
 This guide documents the *first phase* of the build — setup of the OS and AdGuard Home for network-wide DNS filtering.
 
-## Hardware required
+## Hardware Used
 - Orange Pi Zero 3 (2GB), I received mine thanks to Orange PI and [Home Assistant AU & NZ](https://www.facebook.com/groups/285027802430617)
 - [Case/Enclosure](https://s.click.aliexpress.com/e/_c4LEwaiR)
 - [Micro SD Card](https://s.click.aliexpress.com/e/_c4PYWmTp)
