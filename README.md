@@ -35,7 +35,7 @@ This guide documents the *first phase* of the build — setup of the OS and AdGu
 4. Set up normal user account
 5. Install of Armbian was successful
    
-   ![Armbian boot screen](Armbian-boot.png))
+   ![Armbian boot screen](Armbian-boot.png)
 
 
 ### 3. Secure the System (Completed)
@@ -97,7 +97,7 @@ curl -s -S -L [https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/
 Once AdGuard has finished installer it will provide you with a url such as http://192.168.x.xxx:3000 
 Enter this url in a web browser and work through the installation steps
 
-![AdGuard Setup Wizard](adguard-welcome.png))
+![AdGuard Setup Wizard](adguard-welcome.png)
 
 ### 3. Troubleshooting: Can't Create AdGuard Initial Login
 If you can access the setup wizard via your browser but you get an error when trying to create admin login credentials, Port 53 (DNS) is likely being blocked or held hostage by a default system service bundled with Armbian.
@@ -140,7 +140,7 @@ Before altering network-wide configurations directly on my router, I verified fu
 
 If it is all looking good, go ahead and add the AdGuard DNS to your router
 
-![Armbian boot screen](adguard-dash.png))
+![Armbian boot screen](adguard-dashboard.png)
 
 # Phase 3 – Home Assistant Integration
 
@@ -167,4 +167,4 @@ Click Submit.
 ### 2. Practical Automations & Use Cases
 Once integrated, you will see the Home Assistant sensors and can set up dashboards and automations. Before I jump into that I'm going to keep an eye on the baseline data for a week or two. After this I might set up an automation to alert me if there is anything unusual like a spike in blocked DNS requests. 
 
-![AdGuard in Home Assistant](adguard-homeassistant.png))
+![AdGuard in Home Assistant](adguard-homeassistant.png)
