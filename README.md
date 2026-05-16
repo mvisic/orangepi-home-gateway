@@ -86,5 +86,19 @@ I went to 'Add connection' and entered my SSID, Password and Security type. I ig
    ```
    Idle CPU was 1% so looking good
  
-## Next Step - Install AdGuard
-   coming soon...
+## Phase 2 – AdGuard Home Installation & Troubleshooting
+
+### 1. Run the Installation Script
+Execute the official automated installer script:
+```bash
+curl -s -S -L [https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh](https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh) | sh
+
+### 2. Run the Installation Script
+Troubleshooting: Web Wizard Won't Create Initial Login
+If you can access the setup wizard via your browser but you get an error when trying to create admin login credentials, Port 53 (DNS) is likely being blocked or held hostage by a default system service bundled with Armbian.
+Find what is using port 53
+```bash
+sudo lsof -i :53
+# OR
+sudo ss -tulpn | grep :53
+ ```
