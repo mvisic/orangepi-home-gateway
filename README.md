@@ -93,9 +93,15 @@ Execute the official automated installer script:
 ```bash
 curl -s -S -L [https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh](https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh) | sh
 ```
-### 2. Troubleshooting: Can't Create AdGuard Initial Login
+### 2. Access the AdGuard Web Interface to Complete Installation
+Once AdGuard has finished installer it will provide you with a url such as http://192.168.x.xxx:3000 
+Enter this url in a web browser and work through the installation steps
+
+![AdGuard Setup Wizard](adguard-welcome.png))
+
+### 3. Troubleshooting: Can't Create AdGuard Initial Login
 If you can access the setup wizard via your browser but you get an error when trying to create admin login credentials, Port 53 (DNS) is likely being blocked or held hostage by a default system service bundled with Armbian.
-Find what is using port 53
+Go back to terminal and find what is using port 53
 ```bash
 sudo lsof -i :53
 # OR
@@ -103,7 +109,7 @@ sudo ss -tulpn | grep :53
  ```
 For me it showed systemd-resolved
 
-### 3. Fix the conflict (systemd-resolved)
+### 4. Fix the conflict (systemd-resolved)
 Disable and stop systemd-resolved
 ```bash
 sudo systemctl disable systemd-resolved
@@ -120,7 +126,7 @@ sudo ss -tulpn | grep :53
 ```
 No output means it is now free!
 
-### 4. Finish Setting Up AdGuard
+### 5. Finish Setting Up AdGuard
 Return to the AdGuard browser configuration page, refresh, and complete the admin setup wizard successfully.
 
 #### Verification & Local Client Testing
@@ -133,6 +139,8 @@ Before altering network-wide configurations directly on my router, I verified fu
 3. Confirm that advertisements are suppressed and verify that traffic analytics begin appearing on the AdGuard Home central dashboard.
 
 If it is all looking good, go ahead and add the AdGuard DNS to your router
+
+![Armbian boot screen](adguard-dash.png))
 
 # Phase 3 – Home Assistant Integration
 
@@ -155,5 +163,8 @@ SSL Options: Uncheck both SSL options if handling this locally across your priva
 
 Click Submit.
 
+
 ### 2. Practical Automations & Use Cases
 Once integrated, you will see the Home Assistant sensors and can set up dashboards and automations. Before I jump into that I'm going to keep an eye on the baseline data for a week or two. After this I might set up an automation to alert me if there is anything unusual like a spike in blocked DNS requests. 
+
+![AdGuard in Home Assistant](adguard-homeassistant.png))
