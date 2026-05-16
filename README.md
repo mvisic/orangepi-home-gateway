@@ -86,7 +86,7 @@ I went to 'Add connection' and entered my SSID, Password and Security type. I ig
    ```
    Idle CPU was 1% so looking good
  
-## Phase 2 – AdGuard Home Installation & Troubleshooting
+# Phase 2 – AdGuard Home Installation & Troubleshooting
 
 ### 1. Run the Installation Script
 Execute the official automated installer script:
@@ -103,7 +103,7 @@ sudo ss -tulpn | grep :53
  ```
 For me it showed systemd-resolved
 
-# Fix the conflict (systemd-resolved)
+### 3. Fix the conflict (systemd-resolved)
 Disable and stop systemd-resolved
 ```bash
 sudo systemctl disable systemd-resolved
@@ -120,10 +120,10 @@ sudo ss -tulpn | grep :53
 ```
 No output means it is now free!
 
-# Finish Setting Up AdGuard
+### 4. Finish Setting Up AdGuard
 Return to the AdGuard browser configuration page, refresh, and complete the admin setup wizard successfully.
 
-### 3. Verification & Local Client Testing
+#### Verification & Local Client Testing
 Before altering network-wide configurations directly on my router, I verified functionality on a single local device, my laptop.
 
 1. Manually change the DNS IP settings on a laptop or computer to point directly to the Orange Pi’s static IP address.
@@ -134,11 +134,11 @@ Before altering network-wide configurations directly on my router, I verified fu
 
 If it is all looking good, go ahead and add the AdGuard DNS to your router
 
-## Phase 3 – Home Assistant Integration
+# Phase 3 – Home Assistant Integration
 
 Once network data is flowing through AdGuard, it can be bridged into Home Assistant to unlock hardware-level controls and system automation triggers.
 
-1. Connect AdGuard Home to Home Assistant
+### 1. Connect AdGuard Home to Home Assistant
 Inside your Home Assistant instance, navigate to Settings > Devices & Services > Add Integration.
 
 Search for and select AdGuard Home.
@@ -155,5 +155,5 @@ SSL Options: Uncheck both SSL options if handling this locally across your priva
 
 Click Submit.
 
-2. Practical Automations & Use Cases
+### 2. Practical Automations & Use Cases
 Once integrated, you will see the Home Assistant sensors and can set up dashboards and automations. Before I jump into that I'm going to keep an eye on the baseline data for a week or two. After this I might set up an automation to alert me if there is anything unusual like a spike in blocked DNS requests. 
