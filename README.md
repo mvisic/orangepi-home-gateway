@@ -126,11 +126,11 @@ Return to the AdGuard browser configuration page, refresh, and complete the admi
 ### 3. Verification & Local Client Testing
 Before altering network-wide configurations directly on my router, I verified functionality on a single local device, my laptop.
 
-# 1. Manually change the DNS IP settings on a laptop or computer to point directly to the Orange Pi’s static IP address.
+1. Manually change the DNS IP settings on a laptop or computer to point directly to the Orange Pi’s static IP address.
 
-# 2. Navigate to an ad-blocking confirmation tool like [Can You Block It](https://canyoublockit.com/).
+2. Navigate to an ad-blocking confirmation tool like [Can You Block It](https://canyoublockit.com/).
 
-# 3. Confirm that advertisements are suppressed and verify that traffic analytics begin appearing on the AdGuard Home central dashboard.
+3. Confirm that advertisements are suppressed and verify that traffic analytics begin appearing on the AdGuard Home central dashboard.
 
 If it is all looking good, go ahead and add the AdGuard DNS to your router
 
@@ -138,7 +138,7 @@ If it is all looking good, go ahead and add the AdGuard DNS to your router
 
 Once network data is flowing through AdGuard, it can be bridged into Home Assistant to unlock hardware-level controls and system automation triggers.
 
-# 1. Connect AdGuard Home to Home Assistant
+1. Connect AdGuard Home to Home Assistant
 Inside your Home Assistant instance, navigate to Settings > Devices & Services > Add Integration.
 
 Search for and select AdGuard Home.
@@ -155,5 +155,5 @@ SSL Options: Uncheck both SSL options if handling this locally across your priva
 
 Click Submit.
 
-# 2. Practical Automations & Use Cases
+2. Practical Automations & Use Cases
 Once integrated, you will see the Home Assistant sensors and can set up dashboards and automations. Before I jump into that I'm going to keep an eye on the baseline data for a week or two. After this I might set up an automation to alert me if there is anything unusual like a spike in blocked DNS requests. 
