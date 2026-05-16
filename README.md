@@ -93,8 +93,7 @@ Execute the official automated installer script:
 ```bash
 curl -s -S -L [https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh](https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh) | sh
 ```
-### 2. Run the Installation Script
-Troubleshooting: Web Wizard Won't Create Initial Login
+### 2. Troubleshooting: Can't Create AdGuard Initial Login
 If you can access the setup wizard via your browser but you get an error when trying to create admin login credentials, Port 53 (DNS) is likely being blocked or held hostage by a default system service bundled with Armbian.
 Find what is using port 53
 ```bash
@@ -102,3 +101,59 @@ sudo lsof -i :53
 # OR
 sudo ss -tulpn | grep :53
  ```
+For me it showed systemd-resolved
+
+# Fix the conflict (systemd-resolved)
+Disable and stop systemd-resolved
+```bash
+sudo systemctl disable systemd-resolved
+sudo systemctl stop systemd-resolved
+```
+Remove the default symlink and inject a temporary fallback DNS
+```bash
+sudo rm /etc/resolv.conf
+echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+```
+Confirm port 53 is free
+```bash
+sudo ss -tulpn | grep :53
+```
+No output means it is now free!
+
+# Finish Setting Up AdGuard
+Return to the AdGuard browser configuration page, refresh, and complete the admin setup wizard successfully.
+
+### 3. Verification & Local Client Testing
+Before altering network-wide configurations directly on my router, I verified functionality on a single local device, my laptop.
+
+# 1. Manually change the DNS IP settings on a laptop or computer to point directly to the Orange Pi’s static IP address.
+
+# 2. Navigate to an ad-blocking confirmation tool like [Can You Block It](https://canyoublockit.com/).
+
+# 3. Confirm that advertisements are suppressed and verify that traffic analytics begin appearing on the AdGuard Home central dashboard.
+
+If it is all looking good, go ahead and add the AdGuard DNS to your router
+
+## Phase 3 – Home Assistant Integration
+
+Once network data is flowing through AdGuard, it can be bridged into Home Assistant to unlock hardware-level controls and system automation triggers.
+
+# 1. Connect AdGuard Home to Home Assistant
+Inside your Home Assistant instance, navigate to Settings > Devices & Services > Add Integration.
+
+Search for and select AdGuard Home.
+
+Complete the configuration form:
+
+Host/IP: The static IP address of your Orange Pi.
+
+Port: Use 53 (or the control panel port like 80/3000 if prompted for management credentials).
+
+Username & Password: The admin dashboard profile settings created during the setup wizard phase.
+
+SSL Options: Uncheck both SSL options if handling this locally across your private home network without signed external certificates.
+
+Click Submit.
+
+# 2. Practical Automations & Use Cases
+Once integrated, you will see the Home Assistant sensors and can set up dashboards and automations. Before I jump into that I'm going to keep an eye on the baseline data for a week or two. After this I might set up an automation to alert me if there is anything unusual like a spike in blocked DNS requests. 
